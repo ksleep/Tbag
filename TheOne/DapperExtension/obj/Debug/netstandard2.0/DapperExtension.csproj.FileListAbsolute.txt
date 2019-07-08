@@ -1,0 +1,6 @@
+E:\TheOne\DapperExtension\obj\Debug\netstandard2.0\DapperExtension.csprojAssemblyReference.cache
+E:\TheOne\DapperExtension\obj\Debug\netstandard2.0\DapperExtension.csproj.CoreCompileInputs.cache
+E:\TheOne\DapperExtension\obj\Debug\netstandard2.0\DapperExtension.AssemblyInfoInputs.cache
+E:\TheOne\DapperExtension\obj\Debug\netstandard2.0\DapperExtension.AssemblyInfo.cs
+E:\TheOne\DapperExtension\bin\Debug\netstandard2.0\DapperExtension.deps.json
+E:\TheOne\DapperExtension\bin\Debug\netstandard2.0\DapperExtension.dll

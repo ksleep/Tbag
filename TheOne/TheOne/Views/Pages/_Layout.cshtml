@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<meta http-equiv="Content-Type" content="text/html; Charset=utf-8" />
+        <meta http-equiv="Content-Language" content="zh-CN" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <title>个人博客网站</title>
+        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />*@
+    <script src="~/Bshow/js/jquery.min.js"></script>
+    <script src="~/lib/layui/layui.js"></script>
+    <script src="~/Bshow/js/global.js"></script>
+    <script src="~/Bshow/js/index.js"></script>
+    <script src="~/js/Load.js"></script>
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/css/global.css" rel="stylesheet" />
+    @*<link href="~/css/okadmin.css" rel="stylesheet" />
+        <link href="~/lib/nprogress/nprogress.css" rel="stylesheet" />*@
+
+    <!--font-awesome-->
+    <link href="~/Bshow/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="~/Bshow/css/global.css" rel="stylesheet" />
+    <link href="~/Bshow/css/animate.min.css" rel="stylesheet" />
+
+    <!-- 本页样式表 -->
+    @*<link href="~/Bshow/css/detail.css" rel="stylesheet" />
+    <link href="~/Bshow/css/blog.css" rel="stylesheet" />*@
+    <!-- jquery -->
+    <script src="~/Bshow/js/jquery.min.js"></script>
+
+    @RenderSection("Heads", required: false)
+</head>
+<body>
+<nav id="h" class="blog-nav layui-header">
+    <div class="blog-container">
+        <a href="/QQ/qqLogin" class="blog-user">
+            <i class="fa fa-qq"></i>
+        </a>
+        <a class="blog-logo" href="index.html">Long</a>
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item">
+                <a href="index.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="mixed_pic.html"><i class="fa fa-paper-plane-o fa-fw"></i>&nbsp;杂七杂八</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+            </li>
+            <span class="layui-nav-bar"></span>
+        </ul>
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+@RenderBody()
+@*尾部*@
+<footer id="f" class="blog-footer">
+    <p>
+        <span>Copyright</span><span>©</span><span>2018</span>
+        <a href="">念寒博客</a><span>Design By Longwang</span>
+    </p>
+    <p>
+        <a href="" target="_blank">湘ICP备18010289号</a>
+    </p>
+</footer>
+@*<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+            <li class="layui-nav-item">
+                <a href="index.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="mixed_pic.html"><i class="fa fa-paper-plane-o fa-fw"></i>&nbsp;杂七杂八</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+            </li>
+            <span class="layui-nav-bar"></span>
+        </ul>*@
+
+
+@*分享*@
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px; height: 100%;">
+            <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1533783041273">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blog-mask animated layui-hide"></div>
+<script>(function(T, h, i, n, k, P, a, g, e) {
+        g = function() {
+            P = h.createElement(i);
+            a = h.getElementsByTagName(i)[0];
+            P.src = k;
+            P.charset = "utf-8";
+            P.async = 1;
+            a.parentNode.insertBefore(P, a)
+        };
+        T["ThinkPageWeatherWidgetObject"] = n;
+        T[n] || (T[n] = function() { (T[n].q = T[n].q || []).push(arguments) });
+        T[n].l = +new Date();
+        if (T.attachEvent) {
+            T.attachEvent("onload", g)
+        } else {
+            T.addEventListener("load", g, false)
+        }
+    }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))
+</script>
+<script>
+    tpwidget("init",
+        {
+            "flavor": "bubble",
+            "location": "WX4FBXXFKE4F",
+            "geolocation": "enabled",
+            "position": "top-right",
+            "margin": "80px 10px",
+            "language": "auto",
+            "unit": "c",
+            "theme": "chameleon",
+            "uid": "UB9B38174E",
+            "hash": "248590b5c03f8dff6285cee0c6d4d8de"
+        });
+    tpwidget("show");
+</script>
+
+@*<div class="layui-layout layui-layout-admin">
+            <div class="layui-layout layui-layout-admin">
+                @RenderBody()
+            </div>
+        </div>*@
+
+@Html.Raw(TempData["Message"] == null ? string.Empty : string.Format("<script>{0}</script>", TempData["Message"]))
+@RenderSection("Scripts", required: false)
+<mini-profiler position="RenderPosition.BottomRight"/>
+</body>
+</html>

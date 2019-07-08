@@ -1,0 +1,300 @@
+﻿@{
+    Layout = "~/Views/Pages/_Layout.cshtml";
+}
+@section Heads{
+
+    <!--Layui-->
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet"/>
+    <!--font-awesome-->
+    <link href="~/Bshow/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--全局样式表-->
+    <link href="~/Bshow/css/global.css" rel="stylesheet"/>
+    <link href="~/Bshow/css/animate.min.css" rel="stylesheet"/>
+
+    <!-- 本页样式表 -->
+    <link href="~/Bshow/css/index.css" rel="stylesheet"/>
+    <link href="~/Bshow/css/blog.css" rel="stylesheet"/>
+    <style>
+        .cardFooter {
+            margin: 0 auto;
+            width: 100%;
+            height: 60px;
+            position: relative;
+            display: inline-block;
+            border-radius: 5px;
+            background-color: rgb(255,255,255);
+        }
+    </style>
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html>
+
+<body>
+
+    <div class="blog-user"></div>
+    <div class="blog-body">
+        <div class="layui-carousel blog-bg" id="carousel" lay-anim="default" lay-indicator="inside" lay-arrow="always" style="width: 1170px; height: 360px;">
+            <div carousel-item="">
+                <div class="bg bg_a"></div>
+                <div class="bg bg_b"></div>
+                <div class="bg bg_c layui-this"></div>
+                <div class="bg bg_d"></div>
+                <div class="bg bg_e"></div>
+            </div>
+            <div class="layui-carousel-ind">
+                <ul>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class="layui-this"></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                </ul>
+            </div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button>
+        </div>
+        <div class="blog-container">
+            <div class="blog-main">
+                <div class="home-tips shadow">
+                    <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
+                    <div class="home-tips-container">
+                        <span style="color: rgb(0, 150, 136); cursor: pointer; display: none;">
+                            <p><span>网站处于试运行过程，如遇到bug，可以及时与我联系哦，首页左侧可以联系我，或者给我留言。</span></p>
+                        </span><span style="color: rgb(0, 150, 136); cursor: pointer; display: block;">
+                            <p><span>念寒寒博客&nbsp; —— &nbsp;一个.Net程序员的个人博客，网站采用Layui为前端框架，记录技术交流，工作心得体会！</span></p>
+                        </span>@*<span style="color: rgb(0, 150, 136); cursor: pointer; display: none;">感谢您发现本站，由于某些原因导致数据库丢失，但本站内容会持续更新的。</span>*@
+                    </div>
+                </div>
+                <div class="blog-main-left animated slideInLeft" style="margin-bottom: 10px;">
+                    <div class="flow-default" id="parentArticleList">
+                        @*<div class="layui-flow-more">
+                                <a href="javascript:;"><cite>加载更多</cite></a>
+                          </div>*@
+                    </div>
+                    <div class="cardFooter " id="Page">
+
+                    </div>
+                </div>
+                @*右侧展示*@
+                <div class="blog-main-right">
+                    <div class="blogerinfo shadow animated fadeInRight">
+                        <div class="blogerinfo-figure">
+                            <img src="~/Bshow/img/admin.jpg" alt="竹林听雨">
+                        </div>
+                        <p class="blogerinfo-nickname">念寒</p>
+                        <p class="blogerinfo-introduce">有个被嘲笑的梦想万一有天实现了呢？up up~</p>
+                        <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;<span>重庆</span></p>
+                        <hr>
+                        <div class="blogerinfo-contact">
+                            @*<a target="_blank" id="QQjl" title="QQ交流" href="http://shang.qq.com/email/stop/email_stop.html?qq=2896543728"><i class="fa fa-qq fa-2x"></i></a>*@
+                            <a target="_blank" id="gwxx" title="给我写信" href="mailto:2896543728@qq.com"><i class="fa fa-envelope fa-2x"></i></a>
+                            <a target="_blank" id="xlwb" title="新浪微博" href="https://weibo.com/p/1005055534423586"><i class="fa fa-weibo fa-2x"></i></a>
+                            @*<a target="_blank" id="htgl" title="后台管理" href="/toLogin"><i class="fa fa-database fa-2x"></i></a>*@
+                        </div>
+                    </div>
+                    <div class="layui-tab layui-tab-brief shadow animated fadeInRight" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">点击排行</li>
+                            <li>站长推荐</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <ul class="blog-module-ul">
+                                    <li>
+                                        <span>
+                                            <i class="layui-badge-rim layui-bg-red">1</i>
+                                        </span> &nbsp;&nbsp;
+                                        <a href="detail.html">Tomcat优化性能，JVM优化</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="layui-tab-item">
+                                <ul class="blog-module-ul">
+                                    <li>
+                                        <span class="article_is_yc">原创</span> &nbsp;&nbsp;
+                                        <a href="detail.html">Tomcat优化性能，JVM优化</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-module shadow animated fadeInRight">
+                        <div class="blog-module-title"><i class="fa fa-file-text-o"></i>&nbsp;博主介绍</div>
+                        <p>Longwang，一枚90后的java程序员，好奇心比较强，目前是一个码农，从事Java方向的研究和开发。-- Longwang</p>
+                    </div>
+                    <div class="blog-module shadow animated fadeInRight fadeInUp">
+                        <div class="blog-module-title"><i class="layui-icon"></i>&nbsp;热评用户</div>
+                        <ul class="hotusers-list">
+                            <li class="hotusers-list-item">
+                                <div class="hotusers-top hotusers-num">1</div>
+                                <div class="hotusers-avator">
+                                    <img src="http://qzapp.qlogo.cn/qzapp/101477629/B5D5212D0429E4491D932EEEF814FE99/100" width="45" height="45">
+                                </div>
+                                <div>
+                                    <div class="hotusers-nick">Mr.Long</div>
+                                    <span class="hotusers-level" title="等级1" style="background-image: url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv01.png);">
+                                        <i style=" background-image:url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv01-04.png);">潜水</i>
+                                    </span>
+                                    <span class="hotusers-totalcmt">本站评论数：4</span>
+                                </div>
+                                <span class="hotusers-icons"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-module shadow animated fadeInRight fadeInUp">
+                        <div class="blog-module-title"><i class="layui-icon"></i>&nbsp;最近评论</div>
+                        <ul class="recent-list">
+                            <li class="hotusers-list-item">
+                                <div data-name="那么平凡。" class="remark-user-avator">
+                                    <img src="http://qzapp.qlogo.cn/qzapp/101477629/194135EDCD4659E5550C71D6D665F3CB/100" width="45" height="45">
+                                </div>
+                                <div class="remark-content">博主威武</div>
+                                <span class="hotusers-icons"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-module shadow animated fadeInRight">
+                        <div class="blog-module-title"><i class="fa fa-link"></i>&nbsp;友情链接</div>
+                        <ul class="blogroll">
+                            <li>
+                                <a target="_blank" href="http://wurao.xin" title="勿扰博客">勿扰博客</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="http://blog.itcodai.com" title="ITcodai博客">ITcodai博客</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.zqfirst.top" title="旧时光">旧时光</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</body>
+</html>
+@*左侧数据的渲染*@
+<script id="demo" type="text/html">
+
+    {{# layui.each(d, function(index, item){ }}
+    <div class="article shadow animated zoomIn">
+        <div class="article-left ">
+            <img src="~/Bshow/img/jzytp.JPG" alt="Tomcat优化性能，JVM优化">
+        </div>
+        <div class="article-right">
+            <div class="article-title">
+                <span class="article_is_top">{{item.置顶=="1"?'置顶':''}}</span>&nbsp;<span class="article_is_yc">{{item.原创=="1"?'原创':''}}</span>&nbsp;
+                <a href="detail.html">{{item.标题}}</a>
+            </div>
+            <div class="article-abstract">
+                {{item.内容}}
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="article-footer">
+            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{item.创建时间.replace('T',' ')}}</span>
+            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;' {{item.作者}}</span>
+            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="javascript:classifyList(10);">  {{item.标签}}</a></span>
+            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{item.浏览数}}</span>
+            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{item.回复数}}</span>
+        </div>
+    </div>
+    {{# }); }}
+</script>
+@section Scripts{
+    <script type="text/javascript">
+        Article();
+        function Article() {
+            layui_Tpl('/Blog/Home/GetArticleData', '', 'parentArticleList', 'demo');
+        }
+
+        ArticleData();
+        //获取左侧工单数据
+        function ArticleData() {
+            if (typeof (limitPage) == 'undefined') {
+                limitPage = 8;
+            }
+            $.ajax(
+                {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/Blog/Home/ArticleData",
+                    data: {
+                        page: 1,
+                        limit: limitPage
+                    },
+                    success: function (data) {
+
+                        layui.use(['laypage', 'layer', 'laytpl'],
+                            function () {
+                                var laypage = layui.laypage, laytpl = layui.laytpl, carousel = layui.carousel;
+                                laypage.render({
+                                    elem: 'Page',
+                                    count: data.totalItems,
+                                    limit: 8,
+                                    limits: [8, 12, 16, 20, 24],
+                                    groups: 1,
+                                    last: false,
+                                    //curr: pages ,
+                                    layout: ['prev', 'page', 'next', 'skip', 'count'],
+                                    //layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'],
+                                    prev: '<i class="layui-icon">&#xe603;</i>',
+                                    next: '<i class="layui-icon">&#xe602;</i>'
+                                    //, curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+                                    //, hash: 'fenye' //自定义hash值
+                                    ,
+                                    jump: function (obj) {
+                                        //codingArr.length = 0;
+                                        var getTpl = demo.innerHTML;
+                                        var view = document.getElementById('parentArticleList');
+                                        if (obj.curr == 1 && obj.limit == 8) {
+                                            //获取第一行序号
+                                            laytpl(getTpl).render(data.items,
+                                                function (html) {
+                                                    view.innerHTML = html;
+                                                });
+                                            //if (data.items.length > 0) {
+                                            //    oneid(data.items[0].序号);
+                                            //}
+                                        } else {
+                                            var GetDatadata = {
+                                                page: obj.curr,
+                                                limit: obj.limit
+                                            }
+                                            var GetDataSucFun = function (data) {
+                                                //获取第一行序号
+                                                var getTpl = demo.innerHTML;
+                                                var view = document.getElementById('parentArticleList');
+                                                laytpl(getTpl).render(data.items,
+                                                    function (html) {
+                                                        view.innerHTML = html;
+                                                    });
+                                                //if (data.items.length > 0) {
+                                                //    oneid(data.items[0].序号);
+                                                //}
+
+                                            }
+                                            ajaxFucHelper("/Blog/Home/ArticleData",
+                                                GetDataSucFun,
+                                                GetDatadata,
+                                                "json");
+                                        }
+
+                                    }
+
+
+                                }
+                                )
+                            }
+                        )
+                    }
+                })
+        }
+    </script>
+
+}
+
+
+

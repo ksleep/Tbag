@@ -1,0 +1,208 @@
+﻿@{
+    ViewData["Title"] = "呆售";
+    // Layout = "~/Views/Shared/_Master.cshtml";
+    //Layout = "~/Views/Shared/_Layoutfra.cshtml";
+}
+@section Heads{
+
+    <style>
+        .righTop {
+            margin: 0 auto;
+            float: right;
+        }
+
+        .table {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .layui-tab-content {
+            padding: 0;
+        }
+    </style>
+}
+<div class="table-style" style="margin-top: 10px;">
+    <blockquote class="btnPosition">
+        <div class="layui-inline btnLeft" style="text-align: center; display:inline-block; width: 100%; ">
+            @*<div class="layui-btn-group demoTable">
+                <span style="font-size:20px;"><span>设备离线统计报表</span></span>
+            </div>*@
+        </div>
+    </blockquote>
+    @*<blockquote style="text-align: right;">
+            <div class="dropdown">
+                <button class="dropbtn" data-ripple style="vertical-align: -2px">
+                    <i class="iconfont icon-daochufffpx"></i>
+                    <span id="StateFilterName">导出</span>
+                </button>
+                <div class="dropdown-content">
+                    <a id="excelBtn"><img style="vertical-align: -3px" src="~/images/Monitor/ExportToXLS_16x16.png" />XLS</a>
+                    <a id="pdfBtn"><img style="vertical-align: -3px" src="~/images/Monitor/ExportToPDF_16x16.png" />PDF</a>
+                </div>
+            </div>
+
+        </blockquote>*@
+    <table class="layui-table" style="height: 100px;" id="bodyTable" lay-skin="nob" lay-data="{id:'bodyTable'}" lay-filter="bodyTableFilter"></table>
+</div>
+
+<script type="text/html" id="Type">
+    {{#  if((d.Type.charAt(d.Type.length - 1))  != "】"){ }}
+    <span style="color:orange;">{{ d.Type }}】</span>
+    {{#  } else{ }}
+    <span style="color:orange;">{{ d.Type }}</span>
+    {{# } }}
+    @*<span style="color:orange;">{{ d.Type.charAt(d.Type.length - 3) }}</span>*@
+</script>
+<script type="text/html" id="host">
+    {{#  var fn1 = function(){ return d.host;}; }}
+    <a  href="javascript:void(0);" lay-event="edit" class="layui-table-link">{{ fn1()}}</a>
+</script>
+@section Scripts{
+    <script src="~/lib/layui/layui.js"></script>
+    <script type="text/javascript">
+
+        var colsArry = [
+            //{ field: 'id', sort: true, title: '序号' },
+            //{ field: 'inum', sort: true, title: '编号' },
+            //{ field: 'name', sort: true, width: 300, title: '标题' },
+            //{ field: 'type', sort: true, width: 150, title: '类型' },
+            //{ field: 'host', sort: true, width: 300, title: '链接', templet: '#host' }
+            { field: 'id', sort: true, title: '序号',  width: 80 },
+            { field: 'name', sort: true, title: '标题', width: 900 },
+            { field: 'type', sort: true, title: '类型', width: 100 },
+            { field: 'host', sort: true, width: 300, title: '链接', templet: '#host' }
+
+        ];
+        var sortData = { field: 'ID', type: 'desc' }
+
+        loadGrid();
+        function loadGrid() {
+            layui.use('table',
+                function () {
+                    var table = layui.table;
+                    var form = layui.form;
+
+                    //排序事件
+                    table.on('sort(bodyTableFilter)',
+                        function (data) {
+                            sortData = data;
+                            loadGrid();
+                        });
+
+                    //数据加载
+                    var tableWhere = {
+                        sortField: sortData.field,
+                        sortType: sortData.type,
+                        name: $("#searchName").val()
+                    }
+                   // renderTable('#bodyTable', '/Dais/Home/GetData', 'full-5', colsArry, tableWhere, '');
+                    renderTable('#bodyTable', '/Dais/Home/PostFunction', 'full-5', colsArry, tableWhere, '');
+                    //table.render({
+                    //    elem: '#bodyTable'
+                    //    , url: '/Dais/Home/PostFunction'
+                    //    //, cellMinWidth: 200 
+                    //    // ,id:'checkTable'
+                    //    , height: 'full-5'
+                    //    , method: 'post'
+                    //    , limit: 30
+                    //    , limits: [30, 50, 100, 300, 500]
+                    //    , skin: 'nob'//line （行边框风格）   row （列边框风格）   nob （无边框风格）
+                    //    , width: 'auto' //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                    //    , page: true
+                    //    , size: 'sm'
+                    //    //, minWidth: 200
+                    //    , initSort: sortData
+                    //    , cols: [colsArry]
+                    //    , even: true //开启隔行背景
+                    //    , where: tableWhere,
+                    //    done: ''
+                    //});
+                    table.on('tool(bodyTableFilter)', function (obj) {
+                        var data = obj.data;
+                        if (obj.event === 'edit') {
+                            //console.log("222" + data.host);
+                            //window.open("www." + data.host);
+                            var host = "http://www." + data.host;
+                            window.open(host, '_blank');
+                        }
+                        //else if (obj.event === 'del') {
+                        //    layer.confirm("确认删除该数据吗？", { icon: 3, title: '提示' },
+                        //        function (index) {      //确认后执行的操作
+                        //            $.ajax({
+                        //                type: "POST",
+                        //                dataType: "json",
+                        //                url: "/Monitor/Bayonet/DeleteBayonet",
+                        //                data: { id: data.编码 },
+                        //                success: function (data) {
+                        //                    if (data) {
+                        //                        ShowTip("删除成功", 6);
+                        //                        CloseMessage();
+                        //                    }
+                        //                }
+                        //            });
+                        //        });
+                        //}
+                        //else if (obj.event === 'detail') {
+                        //    var index = layer.open({
+                        //        type: 2,
+                        //        title: '详细信息',
+                        //        content: '/Monitor/Bayonet/DetailDict?id=' + data.编码,
+                        //        area: ['1010px', '500px'],
+                        //        maxmin: true,
+                        //        success: function (layero, index) {
+                        //            //隐藏打开窗口按钮
+                        //            var body = layer.getChildFrame('body', index);
+                        //            setPageDisabled(body);
+                        //        }
+
+                        //    });
+                        //    layer.full(index);
+                        //}
+                    });
+                });
+        }
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+            //var layer = layer.ui;
+            ////监听导航点击
+            //element.on('nav(demo)', function (elem) {
+            //    //console.log(elem)
+            //    //var iframeP = window.parent.document.getElementById("ContentWindow1");
+            //    //$(iframeP).attr('src', url)
+            //    layer.msg("2333" + elem.text());
+            //});
+        });
+        function Goother(host) {
+            console.log(host);
+        }
+
+        //var UID = "UB9B38174E"; // 测试用 用户ID，请更换成您自己的用户ID
+        //var KEY = "6zwtzgq7t8iszozn"; // 测试用key，请更换成您自己的 Key
+        //var API = "http://api.seniverse.com/v3/weather/now.json"; // 获取天气实况
+        //var LOCATION = "beijing"; // 除拼音外，还可以使用 v3 id、汉语等形式
+        //// 获取当前时间戳
+        //var ts = Math.floor((new Date()).getTime() / 1000);
+        //// 构造验证参数字符串
+        //var str = "ts=" + ts + "&uid=" + UID;
+        //// 使用 HMAC-SHA1 方式，以 API 密钥（key）对上一步生成的参数字符串（raw）进行加密
+        //// 并将加密结果用 base64 编码，并做一个 urlencode，得到签名 sig
+        //var sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
+        //sig = encodeURIComponent(sig);
+        //str = str + "&sig=" + sig;
+        //// 构造最终请求的 url
+        //var url = API + "?location=" + LOCATION + "&" + str + "&callback=foo";
+        //console.log(url)
+        //// 直接发送请求进行调用，手动处理回调函数
+        //$.getJSON(url, function (data) {
+        //    console.log(data);
+        //    var obj = document.getElementById('content');
+        //    var weather = data.results[0];
+        //    var text = [];
+        //    text.push("Location: " + weather.location.path);
+        //    text.push("Weather: " + weather.now.text);
+        //    text.push("Temperature: " + weather.now.temperature);
+        //    obj.innerText = text.join("\n")
+        //});
+    </script>
+}

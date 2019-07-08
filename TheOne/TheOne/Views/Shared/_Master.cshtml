@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>闲着做着玩</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="~/lib/layui/css/layui.css" media="all" />
+    <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/nav.css" rel="stylesheet" />
+    <link href="~/font/iconfont.css" rel="stylesheet" />
+    <script src="~/js/Load.js"></script>
+    <script type="text/javascript" src="~/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+    @RenderSection("Heads", required: false)
+</head>
+<body>
+    @RenderBody()
+    @*<div class="layui-layout layui-layout-admin">
+        <div class="layui-layout layui-layout-admin">
+            @RenderBody()
+        </div>
+    </div>*@
+
+    @Html.Raw(TempData["Message"] == null ? string.Empty : string.Format("<script>{0}</script>", TempData["Message"]))
+    @RenderSection("Scripts", required: false)
+    <mini-profiler position="RenderPosition.BottomRight" />
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "第一页面";
+    //Layout = "~/Views/Shared/_Master.cshtml";
+    }
+    @section Heads{
+
+        <style>
+            .righTop {
+                margin: 0 auto;
+                float: right;
+            }
+            .table { 
+                overflow: hidden;
+                height: 100%;
+            }
+            .layui-tab-content {
+                padding: 0;
+            }
+        </style>
+    }
+<div class="table">
+    <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+
+        <ul class="layui-tab-title " style="background-color: black;">
+        
+        </ul>
+    </div>
+    <table class="layui-table" id="bodyTable" lay-skin="nob" lay-data="{id:'bodyTable'}" lay-filter="bodyTableFilter">
+       
+    </table>
+</div>
+
+<script type="text/html" id="Type">
+    {{#  if((d.Type.charAt(d.Type.length - 1))  != "】"){ }}
+        <span style="color:orange;">{{ d.Type }}】</span>
+        {{#  } else{ }}
+        <span style="color:orange;">{{ d.Type }}</span>
+        {{# } }}
+    @*<span style="color:orange;">{{ d.Type.charAt(d.Type.length - 3) }}</span>*@
+</script>
+<script type="text/html" id="Link">
+    <a href="{{d.Link}}" class="layui-table-link" target="_blank">{{ d.Link }}</a>
+</script>
+    @section Scripts{
+        <script type="text/javascript">
+
+            var colsArry = [
+                { field: 'ID', sort: true, title: '序号' },
+                { field: 'Title', sort: true, width: 300, title: '标题' },
+                { field: 'Type', sort: true, width: 150, title: '类型', templet: '#Type' },
+                { field: 'Link', sort: true, width: 300, title: '连接', templet: '#Link' }
+          
+            ];
+            var sortData = { field: 'ID', type: 'desc' }
+
+           // loadGrid();
+            function loadGrid() {
+                layui.use('table',
+                    function () {
+                        var table = layui.table;
+                        var form = layui.form;
+                   
+                        //排序事件
+                        table.on('sort(bodyTableFilter)',
+                            function (data) {
+                                sortData = data;
+                                loadGrid();
+                            });
+ 
+                        //数据加载
+                        var tableWhere = {
+                            sortField: sortData.field,
+                            sortType: sortData.type,
+                            name: $("#searchName").val()
+                        }
+                        renderTable('#bodyTable', '/Lexans/GetData', 'full-5', colsArry, tableWhere, '');
+
+           
+                    });
+            }
+            layui.use('element', function(){
+                var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  
+                //监听导航点击
+                element.on('nav(demo)', function(elem){
+                    //console.log(elem)
+                    layer.msg(elem.text());
+                });
+            });
+            //if (window.Notification && Notification.permission !== "denied") {
+            //    Notification.requestPermission(function(status) { // 请求权限
+            //        if (status === 'granted') {
+            //            // 弹出一个通知
+            //            var n = new Notification('Title',
+            //                {
+            //                    body: 'I am a Notification',
+            //                    icon: './images/test1.png'
+            //                });
+            //            // 两秒后关闭通知
+            //            setTimeout(function() {
+            //                    n.close();
+            //                },
+            //                2000);
+            //        }
+            //    });
+            //}
+        </script>
+    }

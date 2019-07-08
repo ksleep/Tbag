@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "找不到页面";
+    //Layout = "~/Views/Shared/_Layoutfra.cshtml";
+}
+<style>
+    .father {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+    }
+
+    .son {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 770px;
+        height: 280px;
+        margin: auto;
+        font-weight: lighter;
+        font-size: 18px;
+        clear: both;
+        color: #289aad
+    }
+
+    .son a {
+        color: blue
+    }
+
+    .son .sonPic {
+        float: left
+    }
+
+    .son .textPoint {
+        /*float: left;*/
+        margin-top: 60px;
+        margin-left: 50px
+        /*margin: 0 auto;*/
+    }
+
+    .textPoint .textB {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0 10px 0;
+    }
+    .layui-fixbar {
+        display: none;
+    }
+
+</style>
+@*<body class="childrenBody">*@
+@*<div class="noFind">
+    <div class="ufo">
+        <i class="seraph icon-test ufo_icon"></i>
+        <i class="layui-icon page_icon">&#xe638;</i>
+    </div>
+    <div class="page404">
+        <i class="layui-icon">&#xe61c;</i>
+        <p>我勒个去，页面被外星人挟持了!</p>
+    </div>
+</div>*@
+<div class="father">
+    <div class="son">
+        <img src="~/images/Group3.png" class="sonPic" />
+        <div class="textPoint">
+            <img src="~/images/404.png" />
+            <div class="textB">我勒个去，页面被外星人挟持了!！</div>
+            @*<div>请联系管理员处理！</div>*@
+        </div>
+    </div>
+</div>
+

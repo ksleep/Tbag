@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "第二页面";
+    //Layout = "~/Views/Shared/_Layoutfra.cshtml";
+}
+@section Heads{
+
+    <style>
+        .righTop {
+            margin: 0 auto;
+            float: right;
+        }
+
+        .table {
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+}
+<div class="table-style" style="margin-top: 10px;">
+    <blockquote class="btnPosition">
+        <div class="layui-inline btnLeft" style="text-align: center; display:inline-block; width: 100%; ">
+            @*<div class="layui-btn-group demoTable">
+                <span style="font-size:20px;"><span>设备离线统计报表</span></span>
+            </div>*@
+        </div>
+       
+    </blockquote>
+    @*<blockquote style="text-align: right;">
+            <div class="dropdown">
+                <button class="dropbtn" data-ripple style="vertical-align: -2px">
+                    <i class="iconfont icon-daochufffpx"></i>
+                    <span id="StateFilterName">导出</span>
+                </button>
+                <div class="dropdown-content">
+                    <a id="excelBtn"><img style="vertical-align: -3px" src="~/images/Monitor/ExportToXLS_16x16.png" />XLS</a>
+                    <a id="pdfBtn"><img style="vertical-align: -3px" src="~/images/Monitor/ExportToPDF_16x16.png" />PDF</a>
+                </div>
+            </div>
+
+        </blockquote>*@
+
+</div>
+<table class="layui-table" style="height: 100px;" id="bodyTable" lay-data="{id:'bodyTable'}" lay-filter="bodyTableFilter"></table>
+<script type="text/html" id="Type">
+    {{#  if((d.Type.charAt(d.Type.length - 1))  != "】"){ }}
+    <span style="color:orange;">{{ d.Type }}】</span>
+    {{#  } else{ }}
+    <span style="color:orange;">{{ d.Type }}</span>
+    {{# } }}
+    @*<span style="color:orange;">{{ d.Type.charAt(d.Type.length - 3) }}</span>*@
+</script>
+<script type="text/html" id="Link">
+    <a href="{{d.Link}}" class="layui-table-link" target="_blank">{{ d.Link }}</a>
+</script>
+<script type="text/html" id="Time">
+    {{#  if((d.Time)  != null){ }}
+    <span style="color:forestgreen;">{{ d.Time }}】</span>
+    {{#  } else{ }}
+    <span style="color:forestgreen;">--</span>
+    {{# } }}
+    @*<span style="color:orange;">{{ d.Type.charAt(d.Type.length - 3) }}</span>*@
+</script>
+@section Scripts{
+    <script type="text/javascript">
+        var colsArry = [
+            { field: 'ID', sort: true, title: '序号' },
+            { field: 'Title', sort: true, title: '标题', width: 220 },
+            { field: 'Link', sort: true, title: '链接', templet: '#Link', width: 200 },
+            { field: 'Type', sort: true, title: '类型', templet: '#Type', width: 80 },
+            { field: 'Time', sort: true, title: '时间', templet: '#Time', width: 200 }
+
+        ];
+        var sortData = { field: 'ID', type: 'desc' }
+
+        loadGrid();
+        function loadGrid() {
+            layui.use('table',
+                function () {
+                    var table = layui.table;
+                    var form = layui.form;
+
+                    //排序事件
+                    table.on('sort(bodyTableFilter)',
+                        function (data) {
+                            sortData = data;
+                            loadGrid();
+                        });
+
+                    //数据加载
+                    var tableWhere = {
+                        sortField: sortData.field,
+                        sortType: sortData.type,
+                        name: $("#searchName").val()
+                    }
+                    renderTable('#bodyTable', '/Tieba/Home/GetData', 'full-5', colsArry, tableWhere, '');
+
+
+
+                });
+        }
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+            //监听导航点击
+            //element.on('nav(demo)', function (elem) {
+            //    //console.log(elem)
+            //    layer.msg(elem.text());
+            //});
+        });
+
+
+
+        //setInterval(refreshColor, 20000);
+
+        function refreshColor() {
+            var myDate = new Date();
+            //console.log("当前小时shu" + myDate.getHours());
+            console.log("当前小时---" + myDate.getHours());
+            console.log("当前分钟---" + myDate.getMinutes());
+        }
+
+        //var myWeather = (function () {
+        //    var funShun = "https://api.thinkpage.cn/v3/weather/now.json?location=Fushun&callback=showWeather&"
+        //    return {
+        //        el: {},
+        //        init: function () {
+        //            var that = this;
+        //            $.extend(that.el, {
+        //                'nowWeather': $('.now-weather'),
+        //                'nowTemperature': $('.now-temperature')
+        //            })
+        //        },
+        //        getUrl: function () {
+        //            var time = Math.round(new Date().getTime() / 1000);
+        //            var str = "ts=" + time + "&ttl=30&uid=UF4C86B626";
+        //            var hash = CryptoJS.HmacSHA1(str, "nvczde0rd9tkkr3o");
+        //            var base = hash.toString(CryptoJS.enc.Base64);
+        //            var sig = encodeURIComponent(base);
+        //            var url = funShun + str + "&sig=" + sig;
+        //            return url;
+        //        },
+        //        getWeather: function () {
+        //            var that = this;
+        //            console.log(that.el.nowWeather)
+        //            $.ajax({
+        //                url: that.getUrl(),
+        //                jsonp: 'callback',
+        //                jsonpCallback: 'showWeather',
+        //                success: function (data) {
+        //                    function showWeather(data) {
+        //                        that.el.nowWeather.html(data.results[0].now.text)
+        //                        that.el.nowTemperature.html(data.results[0].now.temperature)
+        //                        $.cookie('weather', JSON.stringify(data))
+        //                    }
+        //                    eval(data);
+        //                }
+        //            })
+        //        },
+        //        rundev: function () {
+        //            this.init();
+        //            this.getWeather();
+        //            //if ($.cookie('weather') != '') {
+        //            //    var weather = $.parseJSON($.cookie('weather'))
+        //            //    this.el.nowWeather.html(weather.results[0].now.text)
+        //            //    this.el.nowTemperature.html(weather.results[0].now.temperature)
+        //            //} else {
+        //            //    this.getWeather();
+        //            //}
+        //        }
+        //    }
+        //})()
+        //myWeather.rundev();
+    </script>
+
+}

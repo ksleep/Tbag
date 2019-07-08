@@ -1,0 +1,9 @@
+E:\MYone\TheOne\DapperExtensions\bin\Debug\netcoreapp2.1\DapperExtensions.deps.json
+E:\MYone\TheOne\DapperExtensions\bin\Debug\netcoreapp2.1\DapperExtensions.dll
+E:\MYone\TheOne\DapperExtensions\bin\Debug\netcoreapp2.1\DapperExtensions.pdb
+E:\MYone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.csproj.CoreCompileInputs.cache
+E:\MYone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.AssemblyInfoInputs.cache
+E:\MYone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.AssemblyInfo.cs
+E:\MYone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.dll
+E:\MYone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.pdb
+E:\Myone\TheOne\DapperExtensions\obj\Debug\netcoreapp2.1\DapperExtensions.csprojAssemblyReference.cache

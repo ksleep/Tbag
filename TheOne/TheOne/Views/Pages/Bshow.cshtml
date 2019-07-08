@@ -1,0 +1,282 @@
+﻿
+@*@{
+    Layout = "_Layout";
+}*@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; Charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>个人博客网站</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    <!--Layui-->
+    @*<link href="layui/css/layui.css" rel="stylesheet" />*@
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="~/Bshow/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />*@
+    <!--全局样式表-->
+    <link href="~/Bshow/css/global.css" rel="stylesheet" />
+    <link href="~/Bshow/css/animate.min.css" rel="stylesheet" />
+    @*<link href="css/global.css" rel="stylesheet" />
+        <link href="css/animate.min.css" rel="stylesheet" />*@
+    <!-- 本页样式表 -->
+    <link href="~/Bshow/css/index.css" rel="stylesheet" />
+    <link href="~/Bshow/css/blog.css" rel="stylesheet" />
+    @*<link href="css/index.css" rel="stylesheet" />
+    <link href="css/blog.css" rel="stylesheet" />*@
+</head>
+<body>
+    <nav id="h" class="blog-nav layui-header">
+        <div class="blog-container">
+            <a href="/QQ/qqLogin" class="blog-user">
+                <i class="fa fa-qq"></i>
+            </a>
+            <a class="blog-logo" href="index.html">Long</a>
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item">
+                    <a href="index.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="mixed_pic.html"><i class="fa fa-paper-plane-o fa-fw"></i>&nbsp;杂七杂八</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+                </li>
+                <span class="layui-nav-bar"></span>
+            </ul>
+            <a class="blog-navicon" href="javascript:;">
+                <i class="fa fa-navicon"></i>
+            </a>
+        </div>
+    </nav>
+    <div class="blog-user"></div>
+<div class="blog-body">
+    <div class="layui-carousel blog-bg" id="carousel" lay-anim="default" lay-indicator="inside" lay-arrow="always" style="width: 1170px; height: 360px;">
+        <div carousel-item="">
+            <div class="bg bg_a"></div>
+            <div class="bg bg_b"></div>
+            <div class="bg bg_c layui-this"></div>
+            <div class="bg bg_d"></div>
+            <div class="bg bg_e"></div>
+        </div>
+        <div class="layui-carousel-ind">
+            <ul>
+                <li class=""></li>
+                <li class=""></li>
+                <li class="layui-this"></li>
+                <li class=""></li>
+                <li class=""></li>
+            </ul>
+        </div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button>
+    </div>
+    <div class="blog-container">
+        <div class="blog-main">
+            <div class="home-tips shadow">
+                <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
+                <div class="home-tips-container">
+                    <span style="color: rgb(0, 150, 136); cursor: pointer; display: none;">
+                        <p><span>网站处于试运行过程，如遇到bug，可以及时与我联系哦，首页左侧可以联系我，或者给我留言。</span></p>
+                    </span><span style="color: rgb(0, 150, 136); cursor: pointer; display: block;">
+                        <p><span>Long博客&nbsp; —— &nbsp;一个Java程序员的个人博客，网站采用Layui为前端框架，记录技术交流，工作心得体会！</span></p>
+                    </span><span style="color: rgb(0, 150, 136); cursor: pointer; display: none;">感谢您发现本站，由于某些原因导致数据库丢失，但本站内容会持续更新的。</span>
+                </div>
+            </div>
+            <div class="blog-main-left animated slideInLeft">
+                <div class="flow-default" id="parentArticleList">
+                    <div class="article shadow animated zoomIn">
+                        <div class="article-left ">
+                            <img src="~/Bshow/img/jzytp.JPG" alt="Tomcat优化性能，JVM优化">
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <span class="article_is_top">置顶</span>&nbsp;<span class="article_is_yc">原创</span>&nbsp;
+                                <a href="detail.html">Tomcat优化性能，JVM优化</a>
+                            </div>
+                            <div class="article-abstract">
+                                首先在开始之前我们需要知道，在不同的操作系统位数下，（即32位和64位）32位操作系统的JVM会受限于最大2G内存的限制。不管你物理机上有多少内存，JVM只能使用到2G,所
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2018-07-27 09:34:33</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;' 听雨·湘潭</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="javascript:classifyList(10);"> Tomcat</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;286</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;3</span>
+                        </div>
+                    </div>
+                    <div class="layui-flow-more">
+                        <a href="javascript:;"><cite>加载更多</cite></a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-main-right">
+                <div class="blogerinfo shadow animated fadeInRight">
+                    <div class="blogerinfo-figure">
+                        <img src="~/Bshow/img/admin.jpg" alt="竹林听雨">
+                    </div>
+                    <p class="blogerinfo-nickname">念寒</p>
+                    <p class="blogerinfo-introduce">有个被嘲笑的梦想万一有天实现了呢？up up~</p>
+                    <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;<span>重庆</span></p>
+                    <hr>
+                    <div class="blogerinfo-contact">
+                        <a target="_blank" id="QQjl" title="QQ交流" href="http://shang.qq.com/email/stop/email_stop.html?qq=2896543728"><i class="fa fa-qq fa-2x"></i></a>
+                        <a target="_blank" id="gwxx" title="给我写信" href="mailto:2896543728@qq.com"><i class="fa fa-envelope fa-2x"></i></a>
+                        <a target="_blank" id="xlwb" title="新浪微博" href="https://weibo.com/p/1005055534423586"><i class="fa fa-weibo fa-2x"></i></a>
+                        <a target="_blank" id="htgl" title="后台管理" href="/toLogin"><i class="fa fa-database fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="layui-tab layui-tab-brief shadow animated fadeInRight" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">点击排行</li>
+                        <li>站长推荐</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <ul class="blog-module-ul">
+                                <li>
+                                    <span>
+                                        <i class="layui-badge-rim layui-bg-red">1</i>
+                                    </span> &nbsp;&nbsp;
+                                    <a href="detail.html">Tomcat优化性能，JVM优化</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="layui-tab-item">
+                            <ul class="blog-module-ul">
+                                <li>
+                                    <span class="article_is_yc">原创</span> &nbsp;&nbsp;
+                                    <a href="detail.html">Tomcat优化性能，JVM优化</a>
+                                </li>
+                                    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-module shadow animated fadeInRight">
+                    <div class="blog-module-title"><i class="fa fa-file-text-o"></i>&nbsp;博主介绍</div>
+                    <p>Longwang，一枚90后的java程序员，好奇心比较强，目前是一个码农，从事Java方向的研究和开发。-- Longwang</p>
+                </div>
+                <div class="blog-module shadow animated fadeInRight fadeInUp">
+                    <div class="blog-module-title"><i class="layui-icon"></i>&nbsp;热评用户</div>
+                    <ul class="hotusers-list">
+                        <li class="hotusers-list-item">
+                            <div class="hotusers-top hotusers-num">1</div>
+                            <div class="hotusers-avator">
+                                <img src="http://qzapp.qlogo.cn/qzapp/101477629/B5D5212D0429E4491D932EEEF814FE99/100" width="45" height="45">
+                            </div>
+                            <div>
+                                <div class="hotusers-nick">Mr.Long</div>
+                                <span class="hotusers-level" title="等级1" style="background-image: url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv01.png);">
+                                    <i style=" background-image:url(https://changyan.itc.cn/v2/asset/scs/imgs/p-lv01-04.png);">潜水</i>
+                                </span>
+                                <span class="hotusers-totalcmt">本站评论数：4</span>
+                            </div>
+                            <span class="hotusers-icons"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="blog-module shadow animated fadeInRight fadeInUp">
+                    <div class="blog-module-title"><i class="layui-icon"></i>&nbsp;最近评论</div>
+                    <ul class="recent-list">
+                        <li class="hotusers-list-item">
+                            <div data-name="那么平凡。" class="remark-user-avator">
+                                <img src="http://qzapp.qlogo.cn/qzapp/101477629/194135EDCD4659E5550C71D6D665F3CB/100" width="45" height="45">
+                            </div>
+                            <div class="remark-content">博主威武</div>
+                            <span class="hotusers-icons"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="blog-module shadow animated fadeInRight">
+                    <div class="blog-module-title"><i class="fa fa-link"></i>&nbsp;友情链接</div>
+                    <ul class="blogroll">
+                        <li>
+                            <a target="_blank" href="http://wurao.xin" title="勿扰博客">勿扰博客</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://blog.itcodai.com" title="ITcodai博客">ITcodai博客</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.zqfirst.top" title="旧时光">旧时光</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+@*<iframe src="//www.seniverse.com/weather/weather.aspx?uid=UB9B38174E&cid=CHCQ000000&l=&p=SMART&a=1&u=C&s=1&m=0&x=1&d=3&fc=&bgc=&bc=&ti=1&in=1&li=" frameborder="0" scrolling="no" width="200" height="230" allowTransparency="true"></iframe>*@
+    <footer id="f" class="blog-footer">
+        <p>
+            <span>Copyright</span><span>©</span><span>2018</span>
+            <a href="http://www.long225.cn">Long博客</a><span>Design By Longwang</span>
+        </p>
+        <p>
+            <a href="http://www.miitbeian.gov.cn" target="_blank">湘ICP备18010289号</a>
+        </p>
+    </footer>
+    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="index.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="mixed_pic.html"><i class="fa fa-paper-plane-o fa-fw"></i>&nbsp;杂七杂八</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+        </li>
+        <span class="layui-nav-bar"></span>
+    </ul>
+
+    <div class="blog-share layui-hide">
+        <div class="blog-share-body">
+            <div style="width: 200px;height:100%;">
+                <div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1533783041273">
+                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog-mask animated layui-hide"></div>
+    <script src="~/Bshow/js/jquery.min.js"></script>
+    <script src="~/lib/layui/layui.js"></script>
+    <script src="~/Bshow/js/global.js"></script>
+<script src="~/Bshow/js/index.js"></script>
+<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+<script>tpwidget("init", {
+        "flavor": "bubble",
+        "location": "WX4FBXXFKE4F",
+        "geolocation": "enabled",
+        "position": "top-right",
+        "margin": "80px 10px",
+        "language": "auto",
+        "unit": "c",
+        "theme": "chameleon",
+        "uid": "UB9B38174E",
+        "hash": "248590b5c03f8dff6285cee0c6d4d8de"
+    });
+    tpwidget("show");</script>
+
+</body>
+</html>
